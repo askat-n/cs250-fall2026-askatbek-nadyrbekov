@@ -1,0 +1,42 @@
+STEP 4 - BUG REPORT
+===================
+Student name: Askatbek
+
+For each bug, write: the function, the line number, what was wrong,
+how you fixed it, and HOW you found it with the debugger
+(which variable did you watch, and what value surprised you?).
+
+
+BUG 1
+  Function: total_treats
+  Line number: 29
+  What was wrong: The line used "=" so total was replaced by each pet's treats instead of being added up. The function returned only the last value (6).
+  My fix: Changed "total = treats_per_pet[name]" to "total += treats_per_pet[name]".
+  How I found it: Breakpoint on line 29, watched total each time around the loop. I expected 2, 7, 8, 14 but it showed 2, 5, 1, 6 - it never grew, it just copied the current pet's number.
+
+
+BUG 2
+  Function: average_age
+  Line number: 36
+  What was wrong: The loop was range(1, len(ages)), so it started at index 1 and skipped the first age (ages[0] = 3). The sum was 41 instead of 44, which gave 5.125.
+  My fix: Changed "range(1, len(ages))" to "range(len(ages))" so the loop starts at index 0.
+  How I found it: Breakpoint on line 37 (total += ages[i]), watched i. The very first time the loop ran, i was 1, not 0, so the first item of the list was never added.
+
+
+BUG 3
+  Function: find_oldest
+  Line number: 49
+  What was wrong: The comparison was backwards: "if age < oldest_age". oldest_age starts at 0 and no age is less than 0, so the if block never ran and the function returned ("", 0).
+  My fix: Changed "<" to ">" so it reads "if age > oldest_age".
+  How I found it: Breakpoint on line 49 and pressed Step Over again and again. The program never went inside the if block, and oldest_name stayed "" and oldest_age stayed 0 for every pet.
+
+
+REFLECTION (1-2 sentences)
+  What did the debugger show you that just reading the code did not?
+  The debugger showed the real values of the variables on every pass of the loop, so I could see the exact moment they were different from what I expected. Just reading the code, lines like "total = ..." and "age < oldest_age" looked fine at first glance.
+
+
+AI USE NOTE
+  I used an AI assistant (Claude Code) while working on this lab. It helped me
+  understand the steps of the guide, write the code for the TODOs, find the three
+  bugs, and word this report.
