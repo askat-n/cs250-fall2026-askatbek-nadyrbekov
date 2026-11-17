@@ -1,6 +1,6 @@
 STEP 4 - BUG REPORT
 ===================
-Student name: Askatbek
+Student name: Askatbek Nadyrbekov
 
 For each bug, write: the function, the line number, what was wrong,
 how you fixed it, and HOW you found it with the debugger
